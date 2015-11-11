@@ -5,7 +5,7 @@ import glob, os, sys, time, datetime
 # TODO corners save when offline processing
 ONLINE = True
 CALIBRATE = False
-RELATIVE_DESTINATION_PATH = str(datetime.date.today()) + '_distance/'
+RELATIVE_DESTINATION_PATH = str(datetime.date.today()) + "_distance/"
 FPS = 60
 THRESHOLD_WALL_VS_FLOOR = 80
 THRESHOLD_ANIMAL_VS_FLOOR = 120
@@ -244,12 +244,12 @@ if not os.path.exists(RELATIVE_DESTINATION_PATH + 'traces'):
     os.makedirs(RELATIVE_DESTINATION_PATH + 'traces')
 if not os.path.exists(RELATIVE_DESTINATION_PATH + 'timing'):
     os.makedirs(RELATIVE_DESTINATION_PATH + 'timing')
-file = open("distance/distances.csv", 'w')
+file = open(RELATIVE_DESTINATION_PATH + "distances.csv", 'w')
 file.write("animal,distance [unit of the box side],run time [seconds]\n")
 file.close()
 
 for filename in glob.glob("*.avi"):
     floorCrop(filename)
 for filename in glob.glob("*.avi"):
-    file = open("distance/distances.csv", 'a')
+    file = open(RELATIVE_DESTINATION_PATH + "distances.csv", 'a')
     trace(filename)
