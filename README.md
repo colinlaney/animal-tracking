@@ -32,7 +32,7 @@ Since the pixels of an animal contour is embedded to the floor and the floor con
 
 ![Example of contrast](screenshots/example_of_contrast.png?raw=true "Example of contrast")
 
-Because it's hard to fit the floor of the box within camera frame, the script makes some preprocessing. The script takes a certain part of each frame of the videos. It takes a right square `frame[:, w-h:w]` of a frame with sides equal to height ``h`` of a frame.
+Because it's hard to fit the floor of the box within camera frame in the laboratory, the script makes some preprocessing. The script takes a certain part of each frame of the videos. It takes a right square `frame[:, w-h:w]` of a frame with sides equal to height ``h`` of a frame.
 
 ![Crop right square of the frame](screenshots/right_square_crop.png?raw=true "Crop right square of the frame")
 
@@ -41,7 +41,7 @@ That's why the box with an animal have to be placed in the right area of camera 
 (You are free to change this behavior replacing `frame[:, w-h:w]` (right square) by `frame[:, 0:w-h]` (left square), or just flip horizontally your video if you want to leave the script untouched.)
 
 ## User Interface
-If requirements are complied then after running the script you will get a 1st frame of video to be proccesed
+If requirements are complied then after starting the script you will get a 1st frame of video to be proccesed
 
 ![Good fit](screenshots/good_fit.png?raw=true "Good fit")
 
