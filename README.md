@@ -49,12 +49,6 @@ The right is the ordinary frame with the floor highlighted by the red quad. This
 
 If you're satisfied the look of the floor you can press any key except ESC or click right mouse button to continue. Else you are free to determine the right way of highlighting the area of the floor. To do that click left button on each corner of the floor strarting with any one.
 
-![Fitting](screenshots/fitting_00.png?raw=true "Click")
-![Fitting](screenshots/fitting_01.png?raw=true "Move")
-![Fitting](screenshots/fitting_02.png?raw=true "Click")
-![Fitting](screenshots/fitting_03.png?raw=true "Move")
-![Fitting](screenshots/fitting_04.png?raw=true "Click")
-![Fitting](screenshots/fitting_05.png?raw=true "Move")
-![Fitting](screenshots/fitting_06.png?raw=true "Click")
+![Fitting](screenshots/UI.gif?raw=true "Click-Move-Click")
 
 Immediately after click on the 4th corner the processing will start.
