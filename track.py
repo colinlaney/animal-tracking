@@ -88,7 +88,7 @@ def floorCrop(filename):
     kernelSize = (5, 5)
     frameBlur = cv2.GaussianBlur(frameGray, kernelSize, 0)
     retval, mask = cv2.threshold(frameBlur, THRESHOLD_WALL_VS_FLOOR, 255, cv2.THRESH_BINARY_INV)
-    _, contours, hierarchy = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 
     tetragons = []
     HALF_AREA = 0.5*h*h
@@ -170,7 +170,7 @@ def trace(filename):
         kernelSize = (25, 25)
         frameBlur = cv2.GaussianBlur(frameGray, kernelSize, 0)
         _, thresh = cv2.threshold(frameBlur, THRESHOLD_ANIMAL_VS_FLOOR, 255, cv2.THRESH_BINARY)
-        _, contours, hierarchy = cv2.findContours(thresh.copy(),cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+        contours, hierarchy = cv2.findContours(thresh.copy(),cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         if len(contours) < 1:   # TODO more pythonic way of the check
             continue
 
