@@ -50,7 +50,6 @@ def drawFloorCrop(event,x,y,flags,params):
         # Get the matrix of perspective transformation
         params['croppingPolygons'][name] = np.reshape(params['croppingPolygons'][name], (4,2))
         tetragonVertices = np.float32(params['croppingPolygons'][name])
-        cv2.destroyWindow('Floor Corners for ' + name)
         tetragonVerticesUpd = np.float32([[0,0],[0,h],[h,h],[h,0]])
         perspectiveMatrix[name] = cv2.getPerspectiveTransform(tetragonVertices, tetragonVerticesUpd)
     if event == cv2.EVENT_LBUTTONDOWN:
