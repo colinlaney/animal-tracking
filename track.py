@@ -189,6 +189,8 @@ def trace(filename):
         # Find a contour with the biggest area (animal most likely)
         contour = contours[np.argmax(map(cv2.contourArea, contours))]
         M = cv2.moments(contour)
+        if M['m00'] == 0:
+            continue
         x = int(M['m10'] / M['m00'])
         y = int(M['m01'] / M['m00'])
         if _x == 0 and _y == 0:
