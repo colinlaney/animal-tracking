@@ -117,7 +117,10 @@ def floorCrop(filename):
     # cv2.add(frameGray, imgSquare / 2, frameGray)
     cv2.drawContours(frameGray, tetragons, -1, BGR_COLOR['red'], 2, cv2.LINE_AA)
 
-    tetragonVertices = tetragons[0]
+    if len(tetragons) > 0:
+        tetragonVertices = tetragons[0]
+    else:
+        tetragonVertices = np.float32([[0,0], [0,h], [h,h], [h,0]])
     # Sort the cropping tetragon vertices according to the following order:
     # [left,top], [left,bottom], [right,bottom], [right,top]
     tetragonVertices = counterclockwiseSort(tetragonVertices)
