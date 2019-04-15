@@ -8,7 +8,7 @@ CALIBRATE = False
 RELATIVE_DESTINATION_PATH = str(datetime.date.today()) + '_distance/'
 FPS = 60
 THRESHOLD_WALL_VS_FLOOR = 80
-THRESHOLD_ANIMAL_VS_FLOOR = 120
+THRESHOLD_ANIMAL_VS_FLOOR = 70
 HD = 1280, 640
 BGR_COLOR = {'red': (0,0,255),
              'green': (127,255,0),
@@ -155,6 +155,18 @@ def trace(filename):
     while not frame.any():
         ret, frame = cap.read()
 
+    background = frame.copy()
+    i_frame = 1
+    n_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    while frame is not None:
+        ret, frame = cap.read()
+        if frame is None:
+            break
+        background = cv2.addWeighted(frame, 0.5 - i_frame / n_frames, background, 0.5 + i_frame / n_frames, 0)
+        i_frame += 1
+    cap = cv2.VideoCapture(filename)
+    ret, frame = cap.read()
+
     frame = frame[:, w-h : w]
     
     # floorCrop(filename)
@@ -171,10 +183,11 @@ def trace(filename):
         
         if frame is None:   # not logical
             break
+        frameColor = frame[:, w-h : w].copy()
+        frame = cv2.subtract(frame, background)
 
         t = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.
         frame = frame[:, w-h : w]
-        frameColor = frame.copy()
         if len(croppingPolygons[name]) == 4:
             cv2.drawContours(frameColor, [np.reshape(croppingPolygons[name], (4,2))], -1, BGR_COLOR['red'], 2, cv2.LINE_AA)
         else:
