@@ -162,7 +162,7 @@ def trace(filename):
         ret, frame = cap.read()
         if frame is None:
             break
-        background = cv2.addWeighted(frame, 0.5 - i_frame / n_frames, background, 0.5 + i_frame / n_frames, 0)
+        background = cv2.addWeighted(frame, 0.5 * (1 - i_frame / n_frames), background, 0.5 * (1 + i_frame / n_frames), 0)
         i_frame += 1
     cap = cv2.VideoCapture(filename)
     ret, frame = cap.read()
