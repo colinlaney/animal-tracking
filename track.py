@@ -171,6 +171,7 @@ def trace(filename):
         
         if frame is None:   # not logical
             break
+
         t = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.
         frame = frame[:, w-h : w]
         frameColor = frame.copy()
@@ -190,7 +191,7 @@ def trace(filename):
             continue
 
         # Find a contour with the biggest area (animal most likely)
-        contour = contours[np.argmax(map(cv2.contourArea, contours))]
+        contour = contours[np.argmax(list(map(cv2.contourArea, contours)))]
         M = cv2.moments(contour)
         if M['m00'] == 0:
             continue
